@@ -1,0 +1,16 @@
+server {
+	listen 8080;
+	listen [::]:8080;
+
+	#Caminho da pasta do novo server
+	root /var/www/pasta_do_server_novo/;
+	index index.html index.htm index.nginx-debian.html index.php erro.html;
+
+	server_name localhost;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+	error_page 404 400 401 erro.html;
+}

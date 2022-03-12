@@ -1,0 +1,33 @@
+server {
+	listen 8001;
+	listen [::]:8001;
+	access_log /var/www/logs/servico1.log main;
+
+	#Caminho da pasta do novo server
+	root /var/www/servico1/;
+	index index.html index.htm index.nginx-debian.html index.php erro.html;
+
+	server_name localhost;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+}
+
+server {
+	listen 8002;
+	listen [::]:8002;
+	access_log /var/www/logs/servico2.log main;
+
+	#Caminho da pasta do novo server
+	root /var/www/servico2/;
+	index index.html index.htm index.nginx-debian.html index.php erro.html;
+
+	server_name localhost;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+}
